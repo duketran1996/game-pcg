@@ -9,24 +9,25 @@ export var num_hills = 3
 export var slice = 10
 
 var screensize
-var slope
+#var slope
 
 func _ready():
 	randomize()
 	screensize = get_viewport().get_visible_rect().size
-	slope = Array()
+	#slope = Array()
 	var start_y = screensize.y * 3/4
-	slope.append(Vector2(0, start_y))
+	Global.slope.append(Vector2(0, start_y))
 	add_hills()
 
 func _process(delta):
-	if slope[-1].x < $Player.position.x + screensize.x:
+	if Global.slope[-1].x < $Player.position.x + screensize.x:
 		add_hills()
+	#$UI/Label.text = str(Global.score)
 			
 func add_hills():
 	var hill_width = screensize.x / num_hills
 	var hill_slices = hill_width / slice
-	var start = slope[-1]
+	var start = Global.slope[-1]
 	var poly = PoolVector2Array()
 	var min_height = 0.0
 	for i in range(num_hills):
@@ -42,7 +43,7 @@ func add_hills():
 			hill_point.y = start.y + height * cos(2 * PI / hill_slices * j)
 			min_height = max(min_height, hill_point.y)
 			#$Line2D.add_point(hill_point)
-			slope.append(hill_point)
+			Global.slope.append(hill_point)
 			poly.append(hill_point)
 			
 		start.y += height
