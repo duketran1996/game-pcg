@@ -46,7 +46,7 @@ func _physics_process(delta):
 	
 	
 	velocity.x *= speed
-	Global.speed = velocity.x
+	Global.speed = velocity.x / 10
 	velocity = move_and_slide(velocity, Vector2(0, -1),false,20)
 	
 	if preAngle<-PI/2 and rotation>0:
@@ -60,6 +60,9 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
 		if get_slide_count()==0:
 			rotation += 0.08
+	print(is_on_floor());
+	if Input.is_action_pressed("ui_accept") and is_on_floor():
+		velocity.y -= 200
 	
 	if preSlideCnt>0 and get_slide_count()==0:
 		prejump = OS.get_ticks_msec()
@@ -85,12 +88,13 @@ func _physics_process(delta):
 				xspd = xspd
 			if OS.get_ticks_msec()-prejump>350 and abs(dirAngle-rotation)<0.5:
 				#xspd = min(2.5,xspd+0.05)
-				xspd = xspd + 0.05*(roundCnt+1);
+				xspd = xspd + 0.05*(roundCnt+1)
 				maxSpd += 0.05*(roundCnt+1)
 				landCnt = 10
 				#print(OS.get_ticks_msec()-prejump)
 				#coundcnt seemed to be always 0 so i changed it to landcnt
-				Global.score += landCnt;
+				Global.score += landCnt
+				#Global.core += roundCnt
 				
 				print(roundCnt)
 		roundCnt = 0
