@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Slope.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ParallaxBackground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://RichTextLabel.gd" type="Script" id=5]
 
 [sub_resource type="OpenSimplexNoise" id=1]
 
@@ -18,3 +19,17 @@ perlin_noise = SubResource( 1 )
 position = Vector2( 513, 299 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 3 )]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+margin_left = 108.0
+margin_top = 53.0
+margin_right = 148.0
+margin_bottom = 93.0
+text = "0
+"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

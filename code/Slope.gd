@@ -22,6 +22,7 @@ func _ready():
 func _process(delta):
 	if Global.slope[-1].x < $Player.position.x + screensize.x:
 		add_hills()
+	#$UI/Label.text = str(Global.score)
 			
 func add_hills():
 	var hill_width = screensize.x / num_hills

@@ -88,6 +88,8 @@ func _physics_process(delta):
 				maxSpd += 0.05*(roundCnt+1)
 				landCnt = 10
 				#print(OS.get_ticks_msec()-prejump)
+				Global.score += roundCnt;
+				
 				print(roundCnt)
 		roundCnt = 0
 			#get_node("Sprite2").scale
