@@ -16,8 +16,8 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 129, 118 )
+[sub_resource type="CircleShape2D" id=2]
+radius = 103.005
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -30,5 +30,5 @@ playing = true
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 48, 0 )
+position = Vector2( 53, -2 )
 shape = SubResource( 2 )

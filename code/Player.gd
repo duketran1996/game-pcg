@@ -96,8 +96,8 @@ func _physics_process(delta):
 				landCnt = 10
 				#print(OS.get_ticks_msec()-prejump)
 				#coundcnt seemed to be always 0 so i changed it to landcnt
-				Global.score += landCnt
-				#Global.core += roundCnt
+				Global.score += 1
+				Global.score += roundCnt*10
 				
 				print(roundCnt)
 		roundCnt = 0

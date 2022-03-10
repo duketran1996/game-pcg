@@ -7,6 +7,7 @@ extends Node
 var slope
 var score = 0
 var speed = 0
+var gameEnd = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	slope = Array()

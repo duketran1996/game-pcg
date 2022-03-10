@@ -22,6 +22,9 @@ func _ready():
 func _process(delta):
 	if Global.slope[-1].x < $Player.position.x + screensize.x:
 		add_hills()
+	if get_node("SnowBall").position.x >= get_node("Player").position.x:
+		#get_tree().paused = true
+		Global.gameEnd = true
 	#$UI/Label.text = str(Global.score)
 			
 func add_hills():

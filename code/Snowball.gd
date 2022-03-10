@@ -4,7 +4,7 @@ export var speed = 200
 export var gravity = 800
 var velocity = Vector2()
 var startInd = 0
-var xspd = 2
+var xspd = 0.4
 var maxSpd = 4
 var preSlideCnt = 0
 var landCnt = 0
@@ -17,11 +17,12 @@ func _physics_process(delta):
 	velocity.y += gravity * delta
 	
 	velocity.x *= speed
-	Global.speed = velocity.x / 10
+	#Global.speed = velocity.x / 10
+	xspd = min(1.9,xspd+0.002)
 	velocity = move_and_slide(velocity, Vector2(0, -1),false,20)
 	
-	if preSlideCnt>0 and get_slide_count()==0:
-		prejump = OS.get_ticks_msec()
+#	if preSlideCnt>0 and get_slide_count()==0:
+#		prejump = OS.get_ticks_msec()
 	if get_slide_count()>0:
 		#roundCnt = 0
 		var xpos = position.x
@@ -34,30 +35,30 @@ func _physics_process(delta):
 		startInd = i
 		var dir = Global.slope[i] - Global.slope[i-1]
 		var dirAngle = dir.normalized().angle();
-		if preSlideCnt==0:
-			if abs(dirAngle-rotation)>0.9:
-				xspd = 0.5
-				maxSpd = 2
-			elif  xspd<maxSpd:
-				xspd = xspd+0.015
-			else:
-				xspd = xspd
-			if OS.get_ticks_msec()-prejump>350 and abs(dirAngle-rotation)<0.5:
-				#xspd = min(2.5,xspd+0.05)
-				xspd = xspd + 0.05*(roundCnt+1)
-				maxSpd += 0.05*(roundCnt+1)
-				landCnt = 10
-				#print(OS.get_ticks_msec()-prejump)
-				#coundcnt seemed to be always 0 so i changed it to landcnt
-				Global.score += landCnt
-				#Global.core += roundCnt
-				
-				print(roundCnt)
-		roundCnt = 0
+#		if preSlideCnt==0:
+#			if abs(dirAngle-rotation)>0.9:
+#				xspd = 0.5
+#				maxSpd = 2
+#			elif  xspd<maxSpd:
+#				xspd = xspd+0.015
+#			else:
+#				xspd = xspd
+#			if OS.get_ticks_msec()-prejump>350 and abs(dirAngle-rotation)<0.5:
+#				#xspd = min(2.5,xspd+0.05)
+#				xspd = xspd + 0.05*(roundCnt+1)
+#				maxSpd += 0.05*(roundCnt+1)
+#				landCnt = 10
+#				#print(OS.get_ticks_msec()-prejump)
+#				#coundcnt seemed to be always 0 so i changed it to landcnt
+#				Global.score += landCnt
+#				#Global.core += roundCnt
+#
+#				print(roundCnt)
+#		roundCnt = 0
 			#get_node("Sprite2").scale
-			
-		
+
+
 		rotation = dirAngle
-		
-	preSlideCnt = get_slide_count()
-	preAngle = rotation
+#
+#	preSlideCnt = get_slide_count()
+#	preAngle = rotation
