@@ -5,7 +5,7 @@
 [ext_resource path="res://ParallaxBackground.tscn" type="PackedScene" id=3]
 [ext_resource path="res://text2.gd" type="Script" id=4]
 [ext_resource path="res://RichTextLabel.gd" type="Script" id=5]
-[ext_resource path="res://Sound/zapsplat_nature_wind_cold_blizzard_constant_designed_45641.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sound/SLOWER2019-01-02_-_8_Bit_Menu_-_David_Renda_-_FesliyanStudios.com.mp3" type="AudioStream" id=7]
 
 [sub_resource type="OpenSimplexNoise" id=1]
 
@@ -14,6 +14,7 @@ script = ExtResource( 1 )
 perlin_noise = SubResource( 1 )
 
 [node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 349, 261 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -46,6 +47,6 @@ script = ExtResource( 4 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 pause_mode = 2
-stream = ExtResource( 6 )
-volume_db = -20.0
+stream = ExtResource( 7 )
+volume_db = -4.269
 autoplay = true

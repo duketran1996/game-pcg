@@ -53,6 +53,9 @@ func _physics_process(delta):
 		roundCnt += 1
 	if preAngle>PI/2 and rotation<0:
 		roundCnt += 1
+		
+	if Input.is_key_pressed(KEY_ENTER):
+		get_tree().reload_current_scene()
 	
 	if Input.is_action_pressed("ui_left"):
 		if get_slide_count()==0:
@@ -60,9 +63,9 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
 		if get_slide_count()==0:
 			rotation += 0.08
-	print(is_on_floor());
-	if Input.is_action_pressed("ui_accept") and is_on_floor():
-		velocity.y -= 200
+		
+	#if Input.is_action_pressed("ui_accept"):
+	#	velocity.y -= 50
 	
 	if preSlideCnt>0 and get_slide_count()==0:
 		prejump = OS.get_ticks_msec()
