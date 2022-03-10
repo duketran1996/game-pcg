@@ -46,6 +46,7 @@ func _physics_process(delta):
 	
 	
 	velocity.x *= speed
+	Global.speed = velocity.x
 	velocity = move_and_slide(velocity, Vector2(0, -1),false,20)
 	
 	if preAngle<-PI/2 and rotation>0:
@@ -88,7 +89,8 @@ func _physics_process(delta):
 				maxSpd += 0.05*(roundCnt+1)
 				landCnt = 10
 				#print(OS.get_ticks_msec()-prejump)
-				Global.score += roundCnt;
+				#coundcnt seemed to be always 0 so i changed it to landcnt
+				Global.score += landCnt;
 				
 				print(roundCnt)
 		roundCnt = 0
